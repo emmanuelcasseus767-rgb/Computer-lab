@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrement des Participants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1 class="header-title">Salle d'Informatique</h1>
+            <p class="header-subtitle">Système de gestion des accès</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-section">
+            <h2 class="section-title">Enregistrement d'Accès</h2>
+            <p class="section-description">Veuillez enregistrer votre accès à la salle</p>
+
+            <form id="dataForm">
+                <div class="form-group">
+                    <label for="classe">Groupe</label>
+                    <select id="classe" name="classe" required>
+                        <option value="">-- Sélectionnez votre groupe --</option>
+                        <option value="Groupe A">Groupe A</option>
+                        <option value="Groupe B">Groupe B</option>
+                        <option value="Groupe C">Groupe C</option>
+                        <option value="Groupe D">Groupe D</option>
+                        <option value="6ème A">6ème A</option>
+                        <option value="6ème B">6ème B</option>
+                        <option value="5ème A">5ème A</option>
+                        <option value="5ème B">5ème B</option>
+                        <option value="4ème A">4ème A</option>
+                        <option value="4ème B">4ème B</option>
+                        <option value="3ème A">3ème A</option>
+                        <option value="3ème B">3ème B</option>
+                        <option value="2nde A">2nde A</option>
+                        <option value="2nde B">2nde B</option>
+                        <option value="1ère A">1ère A</option>
+                        <option value="1ère B">1ère B</option>
+                        <option value="Terminale A">Terminale A</option>
+                        <option value="Terminale B">Terminale B</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Jour">Jour d'accès</label>
+                    <select id="Jour" name="Jour" required>
+                        <option value="">-- Sélectionnez le jour --</option>
+                        <option value="Lundi">Lundi</option>
+                        <option value="Mardi">Mardi</option>
+                        <option value="Mercredi">Mercredi</option>
+                        <option value="Jeudi">Jeudi</option>
+                        <option value="Vendredi">Vendredi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nomComplet">Nom Complet</label>
+                    <input type="text" id="nomComplet" name="nomComplet" placeholder="Ex: Jean Dupont" required>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-primary">
+                    <span class="btn-text">Enregistrer l'accès</span>
+                    <span class="spinner" style="display: none;"></span>
+                </button>
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+
+        <div class="actions-section">
+            <button onclick="refreshEntries()" class="btn-secondary">
+                Rafraîchir les données
+            </button>
+            <button onclick="downloadCSV()" class="btn-secondary">
+                Télécharger le fichier
+            </button>
+        </div>
+
+        <div class="entries-section">
+            <h2 class="section-title">Derniers Accès</h2>
+            <div id="lastEntries" class="entries-container">
+                <p class="loading-text">Chargement des données...</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Salle d'Informatique | Système de Gestion des Accès v1.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
