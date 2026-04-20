@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /node_modules/
+
+Sitemap: /sitemap.xml

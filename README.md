@@ -6,13 +6,16 @@ Système d'enregistrement des accès à la salle d'informatique permettant de tr
 
 ```
 TP/
-├── index.html          # Interface web
-├── style.css           # Styles CSS
-├── script.js           # Code JavaScript frontend
-├── server.js           # Serveur Node.js backend
-├── package.json        # Dépendances Node.js
+├── index.html              # Interface web
+├── style.css               # Styles CSS
+├── script.js               # Code JavaScript frontend
+├── service-worker.js       # Service Worker (PWA)
+├── manifest.json           # Manifest PWA
+├── server.js               # Serveur Node.js backend
+├── package.json            # Dépendances Node.js
+├── .htaccess               # Configuration serveur
 └── data/
-    └── donnees.csv     # Fichier CSV des accès
+    └── donnees.csv         # Fichier CSV des accès
 ```
 
 ## 🚀 Installation et démarrage
@@ -91,6 +94,9 @@ npm run dev
 ✅ Stockage persistant  
 ✅ Interface responsive  
 ✅ Validation des formulaires  
+✅ **Fonctionnement hors ligne (PWA)**
+✅ **Installation sur téléphone/ordinateur**
+✅ **Mode sombre support**  
 
 ---
 
@@ -115,6 +121,50 @@ npm run dev
 ✅ Téléchargement du fichier CSV  
 ✅ Design responsive  
 ✅ Messages de confirmation/erreur  
+
+---
+
+## 📱 Progressive Web App (PWA)
+
+L'application est une PWA complète qui offre:
+
+### Fonctionnalités PWA
+
+✅ **Fonctionnement hors ligne** - Travaille même sans connexion  
+✅ **Installation** - Installez sur votre téléphone ou ordinateur  
+✅ **Cache intelligent** - Les données sont automatiquement sauvegardées  
+✅ **Icône d'installation** - Apparaît automatiquement (navigateurs compatibles)  
+✅ **Mode sombre** - Support automatique du thème sombre  
+
+### Comment installer l'app
+
+#### Sur smartphone (Android/iOS)
+1. Ouvrez l'application dans votre navigateur
+2. Cherchez le bouton "Ajouter à l'écran d'accueil" ou "Installer"
+3. Confirmez l'installation
+4. L'app apparaît comme une application native
+
+#### Sur navigateur (Chrome/Edge/Firefox)
+1. Ouvrez l'application sur votre ordinateur
+2. Cliquez sur l'icône d'installation dans la barre d'adresse
+3. Confirmez
+4. L'app s'ouvre dans une fenêtre dédiée
+
+### Fonctionnement hors ligne
+
+L'app reste partiellement fonctionnelle sans connexion:
+- ✅ Accédez aux données en cache
+- ✅ Remplissez les formulaires
+- ✅ Visualisez l'historique (si en cache)
+- ❌ Les données sont synchronisées quand vous êtes en ligne
+
+### Fichiers PWA
+
+- `manifest.json` - Métadonnées de l'application
+- `service-worker.js` - Service Worker pour le cache
+- `.htaccess` - Configuration serveur
+- `web.config` - Configuration IIS
+- `PWA-CHECKLIST.md` - Guide de test complet
 
 ---
 

@@ -15,7 +15,23 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         loadLastEntries();
     }, 500);
+
+    // Vérifier la connectivité
+    updateOnlineStatus();
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
 });
+
+// Fonction pour mettre à jour l'état online/offline
+function updateOnlineStatus() {
+    if (navigator.onLine) {
+        document.body.classList.remove('offline');
+        console.log('En ligne');
+    } else {
+        document.body.classList.add('offline');
+        console.log('Hors ligne');
+    }
+}
 
 // Fonction pour soumettre les données du formulaire
 async function submitFormData() {
@@ -70,7 +86,11 @@ async function submitFormData() {
         }
     } catch (error) {
         console.error('Erreur lors de l\'envoi:', error);
-        showMessage('Erreur: Vérifiez que le serveur est démarré (npm start)', 'error');
+        if (!navigator.onLine) {
+            showMessage('Mode hors ligne - Données mises en cache localement', 'error');
+        } else {
+            showMessage('Erreur: Vérifiez que le serveur est démarré (npm start)', 'error');
+        }
     } finally {
         // Réactiver le bouton et masquer le spinner
         submitBtn.disabled = false;
@@ -121,7 +141,11 @@ async function loadLastEntries() {
         }
     } catch (error) {
         console.error('Erreur lors du chargement des entrées:', error);
-        lastEntriesDiv.innerHTML = '<p style="color: #999; font-size: 12px;">Impossible de charger les données</p>';
+        if (!navigator.onLine) {
+            lastEntriesDiv.innerHTML = '<p style="color: #999; font-size: 12px;">Données en cache (hors ligne)</p>';
+        } else {
+            lastEntriesDiv.innerHTML = '<p style="color: #999; font-size: 12px;">Impossible de charger les données</p>';
+        }
     }
 }
 
@@ -132,5 +156,9 @@ function refreshEntries() {
 
 // Fonction pour télécharger le CSV
 function downloadCSV() {
+    if (!navigator.onLine) {
+        alert('Impossible de télécharger en mode hors ligne');
+        return;
+    }
     window.location.href = API_URL + '/download';
 }
